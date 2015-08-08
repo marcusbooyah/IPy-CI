@@ -1,5 +1,5 @@
 # TestIPy
-[![Build Status](https://travis-ci.org/marcusbooyah/TestIPy)](https://travis-ci.org/marcusbooyah/TestIPy)
+[![Build Status](https://travis-ci.org/marcusbooyah/TestIPy.svg?branch=master)](https://travis-ci.org/marcusbooyah/TestIPy)
 Test IPython notebooks on a remote VM automatically
 
 ## Requirements:
