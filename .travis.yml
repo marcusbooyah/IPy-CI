@@ -1,0 +1,15 @@
+language: python
+python:
+- 2.7
+install:
+- echo $TRAVIS_PULL_REQUEST
+- source ./scripts/prepare.sh
+- export PATH="~/scripts/miniconda/bin:$PATH"
+- NOTEBOOKS="" #Directory where notebooks are stored (leave blank to search whole repository)
+- pip install runipy > /dev/null 2>&1
+- pip install jsonschema > /dev/null 2>&1
+## add your prerequisites below ##
+script:
+- df -kh .
+- bash scripts/getfiles.sh
+- bash scripts/runipy.sh
