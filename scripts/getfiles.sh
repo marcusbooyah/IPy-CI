@@ -6,7 +6,7 @@ if [[ $TRAVIS_PULL_REQUEST != "false" ]]; then
   cat changes.out | grep -o '.*\.ipynb$' > notebooks.out
 else
   echo "This is not a pull request, all files in specified directory will be tested."
-  find "$NOTEBOOKS" ! -path "miniconda/*" -name "*.ipynb" -print | cut -c 4- > notebooks.out
+  find "./$NOTEBOOKS" ! -path "./miniconda/*" -name "*.ipynb" -print | cut -c 4- > notebooks.out
 fi
 echo "The following files will be tested:"
 cat notebooks.out
