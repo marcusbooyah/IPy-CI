@@ -20,6 +20,7 @@ This script installs the following packages for testing:
   - miniconda
   - jsonschema
   - runipy
+  
 If your build has further requirements, add them to the .travis.yml file at the end of the install section, for example:
 
 ```
