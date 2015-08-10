@@ -7,7 +7,7 @@ install:
 - pip install runipy > /dev/null 2>&1
 - pip install jsonschema > /dev/null 2>&1
 ## add your prerequisites below ##
-- pip install matplotlib
+##- pip install matplotlib
 script:
 - df -kh .
 - source ./scripts/prepare.sh
