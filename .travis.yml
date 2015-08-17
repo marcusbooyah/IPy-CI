@@ -20,5 +20,3 @@ deploy:
   bucket: testipy
   skip_cleanup: true
   local-dir: fails
-  on:
-	branch: testing
