@@ -4,7 +4,7 @@ mkdir ./fails
 while read line
         do
           	echo "Processing $line"
-                if runipy "./$line" "./$line-tested.ipynb"; then # 2>"./$line.out"; then
+                if runipy "./$line" "./$line-tested.ipynb" 2>"./$line.out"; then
                         echo "$line" passed.
                         echo
                 else
@@ -17,3 +17,4 @@ while read line
 echo "These notebooks failed"
 ls -l ./fails
 echo
+exit $ERROR
