@@ -18,9 +18,7 @@ deploy:
   secret_access_key:
     secure: MYIvErTWHElp1rOGcy3FadR52aWxf507BYdJ5/S9v/NjFehx9M3yu6mCwatPcYgRoXukVJsVpNffeAPfo3RobGr9U+H+TOF5P4r8Dc5ZewbiJt5ZjydUf2uQeYHPBvD1AQUEhF+8nv6Mmhge1CLEhH7oUUrS2be4n2aqyIM+9UjLMZtdja8N3e3q0SLwbtD2A1qq22qI5DQSyQVhs+4BC9xUQgZPUOv0ZdndnmYf9glp5rk7teutO3f/a2zqYWZuA3DVdE4XPs2vQPsL9D0p2Xi/A1yVjKUtc0L/9WZSuAUzXel2gtHDJxFtnx+3nGVrIonwWNvUJmbxJ1Klg3IuPVkN8osWnXE7OdgdYqyzodKSTGLRd05GgVvzOuT+eFnZuAYPOopRwdHAWvN1juzC46KeTOeCQh5ZiTpB0p79xWYUt+Lm/IyW3bCaYDV/R7Pmu1greOGRL9c4TwwZlbI3tfGiw0MklLZPGoaiPU2tRIfYau3vzsO+s2uUHHsVmpBKHjM/BjtjWoVHMDjAeEoV6QT4O0CBoWVsQ3Hdqrvy8caQZ+/V1A9LI84vzhVW2ccif3dc0WvgCyHrL24uKVRNuG6/ZwXcYeQozYmYAlQXZbg0xBH9sieB/fknDZf88Kyisi4xIB1DTqo1xM+WcxmLNLjEWtsPCyN5ogOPK0lEsgs=
   bucket: testipy
+  skip_cleanup: true
   local-dir: fails
-  upload-dir: TestIPy
-  acl: ''
   on:
-    repo: marcusbooyah/TestIPy
-    branch: testing
+	branch: testing
