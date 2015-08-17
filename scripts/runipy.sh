@@ -17,4 +17,3 @@ while read line
 echo "These notebooks failed"
 ls -l ./fails
 echo
-echo
