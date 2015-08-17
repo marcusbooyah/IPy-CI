@@ -16,3 +16,4 @@ while read line
         done < notebooks.out
 echo "These notebooks failed"
 ls -l ./fails
+echo
