@@ -22,3 +22,5 @@ deploy:
   local-dir: fails
   on:
     all_branches: true
+after_deploy:
+exit $ERROR
