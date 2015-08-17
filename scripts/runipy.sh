@@ -1,5 +1,6 @@
 set -e
 ERROR=0
+mkdir ./fails
 while read line
         do
           	echo "Processing $line"
