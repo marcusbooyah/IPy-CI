@@ -9,7 +9,7 @@ while read line
                         echo
                 else
                         echo "$line" failed.
-                        cp ./$line-tested.ipynb ./fails
+                        cp "./$line-tested.ipynb" "./fails"
 			ERROR=1
                         echo
                 fi
