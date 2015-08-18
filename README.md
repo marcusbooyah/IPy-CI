@@ -1,6 +1,6 @@
-# TestIPy
+# IPy CI
 [![Build Status](https://travis-ci.org/marcusbooyah/TestIPy.svg?branch=master)](https://travis-ci.org/marcusbooyah/TestIPy)
-Test IPython notebooks on a remote VM automatically
+Continuous Integration for IPython Notebooks.
 
 ## Requirements:
 You must have a Travis CI account, you can get one [HERE](https://travis-ci.org)
