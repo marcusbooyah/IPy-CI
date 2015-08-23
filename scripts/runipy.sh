@@ -1,6 +1,5 @@
 set -e
 ERROR=0
-mkdir ./fails
 while read line
         do
           	echo "Processing $line"
@@ -9,11 +8,12 @@ while read line
                         echo
                 else
                         echo "$line" failed.
-                        cp "./$line-tested.ipynb" "./fails"
+                        mv "./$line-tested.ipynb" "./$line-failed.ipynb"
 			ERROR=1
                         echo
                 fi
         done < notebooks.out
-echo "These notebooks failed"
-ls -l ./fails
+echo "The following notebooks failed"
+mkdir fails
+find . -name "*failed.ipynb" | xargs tar cvf - | (cd ./fails ; tar xfp -)
 echo
