@@ -1,5 +1,6 @@
 set -e
 ERROR=0
+mkdir fails
 while read line
         do
           	echo "Processing $line"
@@ -15,7 +16,6 @@ while read line
         done < notebooks.out
 if [ $ERROR = 1 ]; then
 	echo "The following notebooks failed"
-	mkdir fails
 	find . -name "*failed.ipynb" | xargs tar cvf - | (cd ./fails ; tar xfp -)
 else
 	echo "All notebooks passed"
