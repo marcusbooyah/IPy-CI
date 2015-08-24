@@ -4,9 +4,7 @@ python:
 install:
 - echo $TRAVIS_PULL_REQUEST
 - NOTEBOOKS=""
-- d=`date +%y%m%d%H%M%S`
-- pip install runipy > /dev/null 2>&1
-- pip install jsonschema > /dev/null 2>&1
+- d=`TZ=":US/Pacific" date +%y-%m-%d----%H:%M:%S`
 script:
 - df -kh .
 - source ./scripts/prepare.sh
