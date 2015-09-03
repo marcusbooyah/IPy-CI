@@ -1,5 +1,5 @@
 # IPy-CI
-[![Build Status](https://travis-ci.org/marcusbooyah/IPy-CI.svg?branch=testing)](https://travis-ci.org/marcusbooyah/IPy-CI) [Failed Notebooks](http://testipy.s3.amazonaws.com/index.html)
+[![Build Status](https://travis-ci.org/marcusbooyah/IPy-CI.svg?branch=master)](https://travis-ci.org/marcusbooyah/IPy-CI)   [![Failed Notebooks](https://img.shields.io/badge/failed-notebooks-lightgrey.svg)](http://testipy.s3.amazonaws.com/index.html)
 
 Continuous integration tool for IPython notebooks.
 
