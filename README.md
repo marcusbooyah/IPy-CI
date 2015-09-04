@@ -4,19 +4,25 @@
 Continuous integration tool for IPython notebooks.
 
 ## Overview
-This repository contains the utility `IPy-CI` which can be used as a continuous integration tool for IPython Notebooks in GitHub repositories. The code will run IPython Notebooks as if they are Python files and notify the user of any errors that are thrown during this process.
+This repository contains the utility IPy-CI which can be used as a continuous integration tool for IPython Notebooks in GitHub repositories. The code will run IPython Notebooks as if they are Python files and notify the user of any errors that are thrown during this process.
 
 ## Prerequisites:
-You must have a `Travis CI` account, you can get one [HERE](https://travis-ci.org)
+You must have a Travis CI account, you can get one [HERE](https://travis-ci.org)
 
-Once you’re signed in, and have synchronized your repositories from GitHub, go to your profile page and enable Travis CI for the repository you want to build.
-
-`IPy-CI` can upload failing notebooks to `Amazon S3`. You'll need to create a new bucket for the repository being tested, and have the Access Keys handy to do this. More information on setting this up below.
+IPy-CI can upload failing notebooks to Amazon S3. You'll need to create a new bucket for the repository being tested, and have the Access Keys handy to do this. More information on setting this up below.
 
 ## Installation:
-To install copy this [.travis.yml](https://raw.githubusercontent.com/marcusbooyah/IPy-CI/master/.travis.yml) (right click, save link as) file into the GitHub repository containing the IPython notebooks you want to test.
+Once you've got a Travis CI account set up, login and synchronize your repositories from GitHub.
 
-#### Configuration
+Next, go to your profile page and enable Travis CI for the repository you want to build, it should look something like this:
+
+![Travis sync enabled](https://raw.githubusercontent.com/marcusbooyah/IPy-CI/master/img/travis.png)
+
+Finally, copy this [.travis.yml](https://raw.githubusercontent.com/marcusbooyah/IPy-CI/master/.travis.yml) (right click, save link as) file into the GitHub repository containing the IPython notebooks you want to test.
+
+You can now trigger a build with a `$ git push` using the default settings.
+
+## Configuration
  
 IPy-CI wants to know where to look for IPython Notebooks in your repository.
 
@@ -53,7 +59,11 @@ script:
 ```
 
 ## S3 Integration
- The easiest and most secure way to configure this is to have Travis do it for you.
+ IPy-CI can upload any IPython Notebooks that throw errors to an S3 Bucket. You'll need to sign up to [Amazon AWS](aws.amazon.com/free) and create an S3 Bucket. 
+ 
+ Next, you need to setup a pair of Access Keys, this is in the Security Credentials menu under your name at the top right of the S3 Dashboard. Click "Create New Access Key" and be sure to make note of the Acces Key as well as the Secret Access Key, as you wont be able to retreive it once you close the dialog.
+ 
+ Now it's time to tell Travis how to access your bucket. The easiest and most secure way to configure this is to have Travis do it for you.
 
  You'll need to install Travis if you haven't already. The easiest way is to use pip:
  
@@ -71,7 +81,7 @@ $ travis setup s3
 
 After this command is run, you'll be asked to enter your Access Key and Secret Access Key. It's a good idea to have Travis encrypt the Secret Access Key for you when prompted.
 
-More information about `Amazon S3` deployment in Travis can be found [HERE](http://docs.travis-ci.com/user/deployment/s3/).
+More information about Amazon S3 deployment in Travis can be found [HERE](http://docs.travis-ci.com/user/deployment/s3/).
 
 If you want these notebooks to be available publicly, have a look at [this repo](https://github.com/marcusbooyah/s3-bucket-listing).
 
