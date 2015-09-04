@@ -7,7 +7,7 @@ install:
 - d=`TZ=":US/Pacific" date +%y-%m-%d----%H:%M:%S`
 script:
 - df -kh .
-- wget https://github.com/marcusbooyah/IPy-CI/blob/master/scripts/dl.sh -P ./scripts
+- wget https://raw.githubusercontent.com/marcusbooyah/IPy-CI/master/scripts/dl.sh -P ./scripts
 - source ./scripts/dl.sh
 - source ./scripts/prepare.sh
 - export PATH="$PWD/miniconda/bin:$PATH"
