@@ -78,8 +78,37 @@ script:
 ```
 $ travis setup s3
 ```
+After this command is run, you'll be asked for the following:
+```
+[IPy-CI]# travis setup s3
+Access key ID: 
+Secret access key: 
+Bucket: 
+Local project directory to upload (Optional): fails
+S3 upload directory (Optional):
+S3 ACL Settings (private, public_read, public_read_write, authenticated_read, bucket_owner_read, bucket_owner_full_control):
+Encrypt secret access key? |yes| yes
+Push only from marcusbooyah/IPy-CI? |yes| 
+Push from testing branch? |yes| 
+```
 
-After this command is run, you'll be asked to enter your Access Key and Secret Access Key. It's a good idea to have Travis encrypt the Secret Access Key for you when prompted.
+Be sure to enter fails as the local upload directory and encrypt the Secret Access Key.
+
+The .travis.yml file should include something like this when done:
+
+```
+deploy:
+  provider: s3
+  access_key_id: ACCESS KEY
+  secret_access_key:
+    secure:  YOUR SECURE KEY
+  bucket: YOUR BUCKET NAME
+  skip_cleanup: true
+  local-dir: fails
+  upload-dir: "$d"
+  on:
+    all_branches: true
+```
 
 More information about Amazon S3 deployment in Travis can be found [HERE](http://docs.travis-ci.com/user/deployment/s3/).
 
