@@ -20,7 +20,8 @@ while read line
         done < notebooks.out
 if [ $ERROR = 1 ]; then # move all failing notebooks to the fails directory
 	echo "The following notebooks failed"
-	find . -name "*failed.ipynb" | xargs tar cvf - | (cd ./fails ; tar xfp -)
+	##find . -name "*failed.ipynb" | xargs tar cvf - | (cd ./fails ; tar xfp -)
+    find . -name "*failed.ipynb" | cpio -pd ./fails
 else
 	echo "All notebooks passed"
 fi
