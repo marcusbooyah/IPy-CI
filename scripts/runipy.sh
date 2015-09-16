@@ -1,6 +1,10 @@
+# Run all IPython Notebook files using runipy
+# This script is to be sourced from .travis.yml
+# Notebooks which throw errors are copied into ./fails
+# S3 deployment uploads the .
 set -e
 ERROR=0
-mkdir fails
+mkdir fails # this is where troublesome notebooks will be placed
 while read line
         do
           	echo "Processing $line"
@@ -14,9 +18,10 @@ while read line
                         echo
                 fi
         done < notebooks.out
-if [ $ERROR = 1 ]; then
+if [ $ERROR = 1 ]; then # move all failing notebooks to the fails directory
 	echo "The following notebooks failed"
-	find . -name "*failed.ipynb" | xargs tar cvf - | (cd ./fails ; tar xfp -)
+	##find . -name "*failed.ipynb" | xargs tar cvf - | (cd ./fails ; tar xfp -)
+    find . -name "*failed.ipynb" | cpio -pd ./fails
 else
 	echo "All notebooks passed"
 fi
