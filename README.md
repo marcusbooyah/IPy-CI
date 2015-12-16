@@ -23,7 +23,7 @@ Finally, copy this [.travis.yml](https://raw.githubusercontent.com/marcusbooyah/
 You can now trigger a build with a `$ git push` using the default settings.
 
 ## Configuration
- 
+
 IPy-CI wants to know where to look for IPython Notebooks in your repository.
 
 You can specify a specific directory containing your IPython notebooks. To do this, edit the `.travis.yml` file as follows:
@@ -33,6 +33,7 @@ You can specify a specific directory containing your IPython notebooks. To do th
 ```
 
 By default, this field is left blank and all IPython Notebooks in your repository will be tested.
+
 ## Installing Additional Dependencies
 This script installs the following packages for testing:
   - `miniconda`
@@ -57,39 +58,42 @@ script:
 - source ./scripts/getfiles.sh
 - source ./scripts/runipy.sh
 ```
+There are a few things to note when doing this. The maximum output size allowed by Travis is 4mb, while this sounds like a lot, using certain commands will use this up very quickly! For example, when using the `wget` command it is a very good idea to run it in quiet mode like this:
+
+```
+wget -q http://yourdomain/yourfile
+```
+There are some commands that do not have options like this, but there is another workaround we can use, sending the output to `/dev/null`. Here I'll show a command using `conda clean` which is very useful to conserve space on the 16GB Travis system!
+```
+conda clean -y -t -p -s > /dev/null 2>&1
+```
 
 ## S3 Integration
- IPy-CI can upload any IPython Notebooks that throw errors to an S3 Bucket. You'll need to sign up to [Amazon AWS](aws.amazon.com/free) and create an S3 Bucket. 
- 
- Next, you need to setup a pair of Access Keys, this is in the Security Credentials menu under your name at the top right of the S3 Dashboard. Click "Create New Access Key" and be sure to make note of the Acces Key as well as the Secret Access Key, as you wont be able to retreive it once you close the dialog.
- 
+ IPy-CI can upload any IPython Notebooks that throw errors to an S3 Bucket. You'll need to sign up to [Amazon AWS](aws.amazon.com/free) and create an S3 Bucket.
+
+ Next, you need to setup a pair of Access Keys, this is in the Security Credentials menu under your name at the top right of the S3 Dashboard. Click "Create New Access Key" and be sure to make note of the Access Key as well as the Secret Access Key, as you wont be able to retrieve it once you close the dialog.
+
  Now it's time to tell Travis how to access your bucket. The easiest and most secure way to configure this is to have Travis do it for you.
 
- You'll need to install Travis if you haven't already. The easiest way is to use pip:
- 
- ```
- $ pip install travis
- ```
- 
- [More information about Travis, including installation help](https://github.com/travis-ci/travis.rb#mac-os-x-via-homebrew)
+ You'll need to install Travis if you haven't already. To install Travis on your machine, follow the instructions [HERE](https://github.com/travis-ci/travis.rb#installation)
 
  You can then use Travis to setup S3 integration for your repository. You'll need to be in the repository directory on the command line:
 
 ```
 $ travis setup s3
 ```
-After this command is run, you'll be asked for the following:
+After this command is run, Travis will ask you to confirm that you are in the correct repository. Then you'll be asked to configure the following:
 ```
 [IPy-CI]# travis setup s3
-Access key ID: 
-Secret access key: 
-Bucket: 
+Access key ID:
+Secret access key:
+Bucket:
 Local project directory to upload (Optional): fails
 S3 upload directory (Optional):
 S3 ACL Settings (private, public_read, public_read_write, authenticated_read, bucket_owner_read, bucket_owner_full_control):
 Encrypt secret access key? |yes| yes
-Push only from marcusbooyah/IPy-CI? |yes| 
-Push from testing branch? |yes| 
+Push only from marcusbooyah/IPy-CI? |yes|
+Push from testing branch? |yes|
 ```
 
 Be sure to enter fails as the local upload directory and encrypt the Secret Access Key.
