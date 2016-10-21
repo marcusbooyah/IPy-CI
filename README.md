@@ -1,7 +1,7 @@
 # IPy-CI
 [![Build Status](https://travis-ci.org/marcusbooyah/IPy-CI.svg?branch=master)](https://travis-ci.org/marcusbooyah/IPy-CI)   [![Failed Notebooks](https://img.shields.io/badge/failed-notebooks-lightgrey.svg)](http://testipy.s3.amazonaws.com/index.html)
 
-Continuous integration tool for IPython notebooks.
+Continuous integration tool for IPython notebooks. This is a voluntary contribution to the Large Synoptic Sky Survey project.
 
 ## Overview
 This repository contains the utility IPy-CI which can be used as a continuous integration tool for IPython Notebooks in GitHub repositories. The code will run IPython Notebooks as if they are Python files and notify the user of any errors that are thrown during this process.
